@@ -1,0 +1,43 @@
+---
+const currentYear = new Date().getFullYear();
+
+const links = [
+  {
+    href: "https://github.com/Abdukhamid000",
+    label: "GitHub",
+  },
+  {
+    href: "https://www.linkedin.com/in/abduhamidtolipov-95505b215",
+    label: "LinkedIn",
+  },
+  {
+    href: "mailto:Abdukhamid000@gmail.com",
+    label: "Email",
+  },
+];
+---
+
+<footer class="w-full border-t border-[#ffffff10] py-8 pb-24 md:pb-8">
+  <div
+    class="mx-auto flex max-w-5xl flex-col items-center justify-between gap-5 text-center sm:flex-row sm:text-left"
+  >
+    <p class="text-sm text-[var(--white-icon)]">
+      © {currentYear} Abduhamid Tolipov · Tashkent, Uzbekistan
+    </p>
+    <nav aria-label="Social links" class="flex items-center gap-5">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+            rel={link.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+            class="text-sm text-[var(--white-icon)] transition hover:text-[var(--white)]"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+   
+</footer>

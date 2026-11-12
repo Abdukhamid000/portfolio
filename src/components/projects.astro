@@ -1,0 +1,162 @@
+---
+interface Project {
+  title: string;
+  type: string;
+  description: string;
+  impact: string;
+  technologies: string[];
+  link?: string;
+  // Add a path such as "/projects/school-dashboard.jpg" when a screenshot is ready.
+  image?: string;
+  imageAlt?: string;
+  imageCover?: boolean;
+}
+
+const projects: Project[] = [
+  {
+    title: "LoadUp 360 fleet management",
+    type: "Longhorn Logistics Group · Fleet operations",
+    description:
+      "Built a fleet-management experience that brings active loads, driver status, and live truck locations together for logistics teams.",
+    impact:
+      "Tracks 1,000+ drivers with GPS updates every 30 seconds, with a live map to follow trucks across their routes.",
+    technologies: ["React", "TypeScript", "HERE Maps", "Firebase", "TanStack Query"],
+    image: "/projects/load-up-360-fleet.jpg",
+    imageAlt: "LoadUp 360 fleet dashboard showing trucks across a live map",
+  },
+  {
+    title: "HERE Maps route planning",
+    type: "LoadUp 360 · Interactive maps",
+    description:
+      "Integrated HERE Maps into a route-planning workflow, with controls for origin, destination, and route preferences.",
+    impact:
+      "Supports route options for toll roads, weigh stations, and route avoidance.",
+    technologies: ["React", "TypeScript", "HERE Maps", "Routing"],
+    image: "/projects/load-up-360-maps.jpg",
+    imageAlt: "LoadUp 360 route planner with HERE Maps and route preference controls",
+  },
+  {
+    title: "Live update board",
+    type: "LoadUp 360 · Operations",
+    description:
+      "Built an update board for dispatch teams, pairing virtualized data tables with WebSocket updates to keep load activity current.",
+    impact:
+      "Virtualized tables handle datasets of up to 10,000 records while keeping scrolling and interactions responsive.",
+    technologies: ["React", "TypeScript", "TanStack Table", "WebSockets"],
+    image: "/projects/load-up-360-update-board.jpg",
+    imageAlt: "LoadUp 360 update board displaying a dense table of load information",
+  },
+  {
+    title: "School management system",
+    type: "Freelance · Frontend",
+    description:
+      "Developed a school platform for day-to-day student and classroom workflows, with role-based access and performance tracking.",
+    impact:
+      "Includes attendance management and a student marketplace with earn-and-spend virtual coins.",
+    technologies: ["Vue.js", "TypeScript", "Role-based access"],
+  },
+  {
+    title: "Lending web experiences",
+    type: "UIC Group · Frontend",
+    description:
+      "Built and maintained lending-related web applications, interactive components, and animated landing pages.",
+    impact:
+      "Improved responsive behavior, website performance, Core Web Vitals, and SEO.",
+    technologies: ["Vue.js", "Responsive UI", "Performance", "SEO"],
+  },
+  {
+    title: "Tashclinic",
+    type: "Website · Tashkent International Clinic",
+    description:
+      "Built the Tashkent International Clinic website, presenting its family health services and visa medical examinations.",
+    impact:
+      "The English-language site highlights primary care, chronic disease management, and medical examinations for visa applicants.",
+    technologies: ["Healthcare", "Website"],
+    link: "https://www.tashclinic.org/en",
+    image: "/projects/tashclinic-homepage.png",
+    imageAlt:
+      "Tashkent International Clinic homepage hero showing its family health and visa medical services",
+    imageCover: true,
+  },
+];
+---
+
+<section
+  id="projects"
+  class="py-16 border-t border-[#ffffff10] text-[var(--white)]"
+>
+  <div class="max-w-5xl mx-auto">
+    <p class="text-lg text-[var(--sec)] mb-2 shiny-sec">Selected work</p>
+    <h2 class="text-4xl md:text-5xl font-medium mb-3">Projects &amp; impact</h2>
+    <p class="text-[var(--white-icon)] mb-9 max-w-2xl">
+      Fleet operations, mapping, and real-time logistics interfaces, alongside
+      selected freelance and product work.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {
+        projects.map((project, index) => (
+          <article class="overflow-hidden rounded-2xl border border-[var(--white-icon-tr)] bg-[#1414149c]">
+            <div class="project-visual relative flex h-52 items-center justify-center overflow-hidden border-b border-[var(--white-icon-tr)] bg-[#0d0d0d] md:h-60">
+              {project.image ? (
+                <img
+                  src={project.image}
+                  alt={project.imageAlt ?? `${project.title} screenshot`}
+                  class:list={[
+                    "absolute inset-0 size-full",
+                    project.imageCover
+                      ? "object-cover"
+                      : "object-contain p-2",
+                  ]}
+                  loading={index < 3 ? "eager" : "lazy"}
+                  decoding="async"
+                />
+              ) : (
+                <div class="relative z-10 flex flex-col items-center gap-3 text-center">
+                  <span class="text-4xl font-light tracking-widest text-[var(--sec)]">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span class="rounded-full border border-[var(--white-icon-tr)] bg-[#101010b8] px-4 py-2 text-xs text-[var(--white-icon)]">
+                    Screenshot coming soon
+                  </span>
+                </div>
+              )}
+              <span class="absolute -right-10 -top-20 size-56 rounded-full border border-[#a476ff20]" aria-hidden="true" />
+              <span class="absolute -bottom-28 -left-12 size-64 rounded-full border border-[#a476ff20]" aria-hidden="true" />
+            </div>
+            <div class="p-5 md:p-6">
+              <p class="mb-2 text-xs uppercase tracking-[0.16em] text-[var(--sec)]">
+                {project.type}
+              </p>
+              <h3 class="mb-3 text-2xl font-semibold">{project.title}</h3>
+              <p class="mb-4 text-sm leading-6 text-[var(--white-icon)]">
+                {project.description}
+              </p>
+              <p class="mb-5 border-l-2 border-[var(--sec)] pl-3 text-sm leading-6 text-[var(--white)]">
+                {project.impact}
+              </p>
+              <ul class="flex flex-wrap gap-2" aria-label="Technologies used">
+                {project.technologies.map((technology) => (
+                  <li class="rounded-full border border-[var(--white-icon-tr)] px-3 py-1 text-xs text-[var(--white-icon)]">
+                    {technology}
+                  </li>
+                ))}
+              </ul>
+              {project.link && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="mt-5 inline-flex items-center gap-2 text-sm text-[var(--sec)] transition hover:text-[var(--white)]"
+                >
+                  Visit live website <span aria-hidden="true">↗</span>
+                  <span class="sr-only">(opens in a new tab)</span>
+                </a>
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

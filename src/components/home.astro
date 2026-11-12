@@ -1,0 +1,124 @@
+---
+import LetterGlitch from "../React/LetterGlitch.tsx";
+import LogoWall from "../components/logoWall.astro";
+import SkillsList from "../React/SkillsList.tsx";
+---
+
+<section class="text-[var(--white)] mt-12 md:mt-0" id="home">
+  <div class="max-w-5xl mx-auto space-y-10 md:py-36 pb-14">
+    <div class="space-y-6">
+      <p class="text-md md:text-lg text-[var(--white-icon)] shiny-white">
+        Hello, I'm Abduhamid Tolipov
+      </p>
+      <div
+        class="flex flex-col lg:flex-row lg:items-center gap-5 lg:gap-10"
+      >
+        <h1
+          class="text-[var(--white)] text-5xl md:text-6xl font-medium text-pretty leading-none"
+        >
+          Frontend <br /> Developer
+        </h1>
+        <p class="text-md md:text-2xl text-[var(--white-icon)]">
+          I build thoughtful, data-rich web applications using{" "}
+          <span class="text-[var(--sec)] shiny-sec">React</span>,{" "}
+          <span class="text-[var(--sec)] shiny-sec">Vue</span>, and TypeScript.
+          From live fleet maps to fast, responsive interfaces.
+        </p>
+      </div>
+      <div
+        class="flex flex-col sm:flex-row sm:items-center gap-4 pt-2 text-[var(--white-icon)]"
+      >
+        <a
+          href="#projects"
+          class="inline-flex items-center justify-center rounded-full bg-[var(--sec)] px-6 py-3 font-medium text-[#101010] transition hover:brightness-110"
+        >
+          Explore my work
+        </a>
+        <a
+          href="/Abduhamid-Tolipov-Resume.pdf"
+          download="Abduhamid-Tolipov-Resume.pdf"
+          class="inline-flex items-center justify-center gap-2 rounded-full border border-[var(--white-icon-tr)] px-6 py-3 font-medium text-[var(--white)] transition hover:border-[var(--sec)] hover:text-[var(--sec)]"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="size-5"
+            aria-hidden="true"
+          >
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <path d="m7 10 5 5 5-5" />
+            <path d="M12 15V3" />
+          </svg>
+          Download resume
+        </a>
+        <span class="text-sm">3.5+ years building for the web · Tashkent, Uzbekistan</span>
+      </div>
+      <div class="flex flex-wrap gap-3 pt-1">
+        <a
+          href="https://github.com/Abdukhamid000"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-full border border-[var(--white-icon-tr)] px-4 py-2 text-sm text-[var(--white-icon)] transition hover:text-white"
+        >GitHub <span aria-hidden="true">↗</span></a>
+        <a
+          href="https://www.linkedin.com/in/abduhamidtolipov-95505b215"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-full border border-[var(--white-icon-tr)] px-4 py-2 text-sm text-[var(--white-icon)] transition hover:text-white"
+        >LinkedIn <span aria-hidden="true">↗</span></a>
+        <a
+          href="mailto:Abdukhamid000@gmail.com"
+          class="rounded-full border border-[var(--white-icon-tr)] px-4 py-2 text-sm text-[var(--white-icon)] transition hover:text-white"
+        >Email me <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+
+    <LogoWall />
+
+    <div class="flex flex-col lg:flex-row items-center gap-8">
+      <SkillsList client:load />
+      <div
+        class="flex justify-center md:w-full md:h-[292px] size-[290px] pt-3 md:pt-9 md:ml-16"
+        aria-hidden="true"
+      >
+        <LetterGlitch
+          client:load
+          glitchColors={["#5e4491", "#A476FF", "#241a38"]}
+          glitchSpeed={33}
+          centerVignette={false}
+          outerVignette={true}
+          smooth={true}
+        />
+      </div>
+    </div>
+    <p class="text-sm text-[var(--white-icon)]">
+      Languages: Uzbek (native), English (professional), Russian (elementary)
+    </p>
+  </div>
+</section>
+
+<style is:global>
+  .shiny-sec {
+    background: linear-gradient(135deg, #a476ff 25%, #eee5ff 50%, #a476ff 75%);
+    background-size: 400% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shine 3s linear infinite;
+  }
+
+  @keyframes shine {
+    0% {
+      background-position: 100% 50%;
+    }
+    30%,
+    70% {
+      background-position: 0% 50%;
+    }
+  }
+</style>
